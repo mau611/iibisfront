@@ -1,95 +1,73 @@
+"use client";
 import Image from "next/image";
-import styles from "./page.module.css";
+import {
+  Col,
+  Container,
+  Nav,
+  Navbar,
+  Row,
+} from "react-bootstrap";
+import { FaHome, FaUser, FaSearch, FaBell } from "react-icons/fa";
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <div>
+      <Navbar bg="primary" data-bs-theme="dark" expand="lg" sticky="top">
+        <Container fluid>
+          <Navbar.Brand href="#home" className="text-primary-emphasis">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+              src="/images/image-color.png"
+              style={{
+                width:'100px',
+                height:'auto',
+              }}
+              sizes="25vw"
+              width={50}
+              height={50}
+              alt="Picture of the author"
             />
-          </a>
-        </div>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}>
+              <Nav.Link href="#search">
+                <FaSearch />
+              </Nav.Link>
+              <Nav.Link href="#notifications">
+                <FaBell />
+              </Nav.Link>
+              <Nav.Link href="#profile">
+                <FaUser />
+              </Nav.Link>
+              <Nav.Link href="#home">
+                <FaHome />
+              </Nav.Link>
+            </Nav>
+            <Nav
+              className="d-flex"
+            >
+              <Nav.Link href="#home">Iniciar sesion</Nav.Link>
+              <Nav.Link href="#profile">
+                <FaUser />
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      //body
+      
+      <Row>
+        <Col sm={2}style={{height:'200px', backgroundColor:'whitesmoke'}}>1 of 2</Col>
+        <Col sm={10}style={{height:'200px', backgroundColor:'aquamarine'}}>2 of 2</Col>
+      </Row>
+
+      //footer
+      <div className="text-center p-5" style={{backgroundColor:'teal'}}>
+        Footer - CopyRight 2024
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+   
+    </div>
   );
 }
+export default Home
