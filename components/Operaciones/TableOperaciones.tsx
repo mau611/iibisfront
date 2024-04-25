@@ -43,7 +43,7 @@ const TableOperaciones = ({ operaciones }) => {
         </tr>
       </thead>
       <tbody>
-        {operaciones.map((operacion, index) => (
+        {operaciones?.map((operacion, index) => (
           <tr key={index}>
             <td>{operacion.numeroOperacion}</td>
             <td>

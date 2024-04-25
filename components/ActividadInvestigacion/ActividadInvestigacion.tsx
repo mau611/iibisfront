@@ -2,18 +2,32 @@
 import React from "react";
 import "./styles.css";
 import { Card } from "react-bootstrap";
-const ActividadInvestigacion = ({ title }) => {
+const ActividadInvestigacion = ({ title, activitie }) => {
+  const cantidadProducida = (operaciones) => {
+    let total = 0;
+    operaciones.map((operacion) => {
+      operacion.documentos_verificacion.map((doc) => {
+        total += doc.metas[0].meta;
+      });
+    });
+    return total;
+  };
   return (
     <div className="body">
       <Card>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
-
           <ul>
-            <li>8 articulos cientificos publicados</li>
-            <li>11 articulos cientificos en remision</li>
-            <li>13 articulos ientificos elaborados</li>
-            <li>4 manuscritos de difusion elaborado</li>
+            {activitie.subactividades.map((subactividad) =>
+              cantidadProducida(subactividad.operaciones) !== 0 ? (
+                <li>
+                  {cantidadProducida(subactividad.operaciones)}{" "}
+                  {subactividad.subactividad}
+                </li>
+              ) : (
+                <></>
+              )
+            )}
           </ul>
         </Card.Body>
       </Card>
