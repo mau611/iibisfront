@@ -1,7 +1,9 @@
+import PdfPreview from "@/components/PdfPreview/PdfPreview";
 import React from "react";
 import { Table } from "react-bootstrap";
 
 const UnidadTable = ({ documentos }) => {
+  console.log(documentos[0]?.archivos_verificacion);
   const metaUnidad = () => {
     let meta = 0;
     documentos.map((doc) => {
@@ -47,7 +49,11 @@ const UnidadTable = ({ documentos }) => {
           </tr>
           <tr>
             <td></td>
-            <td colSpan={2}></td>
+            <td colSpan={2}>
+              {documentos[0]?.archivos_verificacion.map((archivo, index) => (
+                <PdfPreview key={index} nombre={archivo.nombre} />
+              ))}
+            </td>
             <td colSpan={2}></td>
             <td colSpan={2}></td>
             <td colSpan={2}></td>
