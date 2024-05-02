@@ -20,7 +20,7 @@ const PdfPreview = ({ nombre }) => {
     <div className="react-pdf__Page text-center">
       <Link href={ruta} target="_blank">
         <FaFilePdf />
-        Archiivo.pdf
+        {nombre}
       </Link>
     </div>
   );

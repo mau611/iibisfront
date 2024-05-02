@@ -54,9 +54,21 @@ const UnidadTable = ({ documentos }) => {
                 <PdfPreview key={index} nombre={archivo.nombre} />
               ))}
             </td>
-            <td colSpan={2}></td>
-            <td colSpan={2}></td>
-            <td colSpan={2}></td>
+            <td colSpan={2}>
+              {documentos[1]?.archivos_verificacion.map((archivo, index) => (
+                <PdfPreview key={index} nombre={archivo.nombre} />
+              ))}
+            </td>
+            <td colSpan={2}>
+              {documentos[2]?.archivos_verificacion.map((archivo, index) => (
+                <PdfPreview key={index} nombre={archivo.nombre} />
+              ))}
+            </td>
+            <td colSpan={2}>
+              {documentos[3]?.archivos_verificacion.map((archivo, index) => (
+                <PdfPreview key={index} nombre={archivo.nombre} />
+              ))}
+            </td>
           </tr>
         </tbody>
       </Table>

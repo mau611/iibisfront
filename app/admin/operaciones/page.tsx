@@ -11,40 +11,18 @@ import Paginacion from "@/components/Paginacion/Paginacion";
 const Operaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
   const [year, setYear] = useState("Todos");
-  const [lastPage, setLastPage] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
     getOperaciones();
-  }, [year, currentPage]);
+  }, [year]);
   const getOperaciones = async () => {
-    const response = await axios.get(
-      `${endpoint}/operaciones/${year}?page=${currentPage}`
-    );
-    setOperaciones(response.data.data);
-    setLastPage(response.data.last_page);
-  };
-  const onChangePage = (page) => {
-    setCurrentPage(page);
+    const response = await axios.get(`${endpoint}/operaciones/${year}`);
+    setOperaciones(response.data);
   };
   return (
     <AdminLayout>
       <Title title="Operaciones" />
-      <YearSelect
-        value={year}
-        onChange={setYear}
-        setCurrentPage={setCurrentPage}
-      />
-      <Paginacion
-        lastPage={lastPage}
-        currentPage={currentPage}
-        onChangePage={onChangePage}
-      />
+      <YearSelect value={year} onChange={setYear} />
       <TableOperaciones operaciones={operaciones} />
-      <Paginacion
-        lastPage={lastPage}
-        currentPage={currentPage}
-        onChangePage={onChangePage}
-      />
     </AdminLayout>
   );
 };

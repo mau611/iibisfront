@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 
-const YearSelect = ({ value, onChange, setCurrentPage }) => {
+const YearSelect = ({ value, onChange }) => {
   const [years, setYears] = useState<Number[]>([]);
   useEffect(() => {
     getYears();
@@ -21,7 +21,6 @@ const YearSelect = ({ value, onChange, setCurrentPage }) => {
         aria-label="Gestion"
         onChange={(e) => {
           onChange(e.target.value);
-          setCurrentPage(1);
         }}
         value={value}
       >
