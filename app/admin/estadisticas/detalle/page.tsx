@@ -1,6 +1,8 @@
 "use client";
 import DetalleReportes from "@/components/DetalleReportes/DetalleReportes";
 import { endpoint } from "@/components/Endpoint/Endpoint";
+import Paginacion from "@/components/Paginacion/Paginacion";
+import YearSelect from "@/components/YearSelect/YearSelect";
 import AdminLayout from "@/components/layout/admin/AdminLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -9,11 +11,9 @@ import { HiOutlineDocumentSearch } from "react-icons/hi";
 
 const DetalleOperaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
-  const [years, setYears] = useState<Number[]>([]);
   const [year, setYear] = useState("Todos");
 
   useEffect(() => {
-    getYears();
     getOperaciones();
   }, [year]);
 
@@ -21,38 +21,12 @@ const DetalleOperaciones = () => {
     const response = await axios.get(`${endpoint}/detalle_operaciones/${year}`);
     setOperaciones(response.data);
   };
-  const getYears = () => {
-    const currentYear = new Date().getFullYear();
-    const pastYears = Array.from(
-      { length: 5 },
-      (_, index) => currentYear - index - 1
-    );
-    setYears([...pastYears.reverse(), currentYear]);
-  };
   return (
     <AdminLayout>
       <h3 className="text-center p-2">Detalle de operaciones</h3>
       <Row className="container">
         <Col lg={5}>
-          <InputGroup>
-            <InputGroup.Text id="basic-addon1">
-              Buscar por gestion:
-            </InputGroup.Text>
-            <Form.Select
-              aria-label="Gestion"
-              value={year}
-              onChange={(e) => {
-                setYear(e.target.value);
-              }}
-            >
-              <option value="Todos">Todos</option>
-              {years.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </Form.Select>
-          </InputGroup>
+          <YearSelect value={year} onChange={setYear} />
         </Col>
       </Row>
       {operaciones.length > 0 &&

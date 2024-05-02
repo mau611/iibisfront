@@ -10,7 +10,6 @@ const UnidadesTable = ({ docsVerificacion }) => {
         docs.push(doc);
       }
     });
-    console.log(docs);
     return docs;
   };
   return (

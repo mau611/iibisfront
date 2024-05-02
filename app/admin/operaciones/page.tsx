@@ -11,21 +11,18 @@ import Paginacion from "@/components/Paginacion/Paginacion";
 const Operaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
   const [year, setYear] = useState("Todos");
-  const [links, setLinks] = useState([]);
   useEffect(() => {
     getOperaciones();
   }, [year]);
   const getOperaciones = async () => {
     const response = await axios.get(`${endpoint}/operaciones/${year}`);
-    setOperaciones(response.data.data);
-    setLinks(response.data.links);
+    setOperaciones(response.data);
   };
   return (
     <AdminLayout>
       <Title title="Operaciones" />
       <YearSelect value={year} onChange={setYear} />
       <TableOperaciones operaciones={operaciones} />
-      <Paginacion links={links} />
     </AdminLayout>
   );
 };

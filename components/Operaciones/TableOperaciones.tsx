@@ -39,7 +39,6 @@ const TableOperaciones = ({ operaciones }) => {
           <th>Monto</th>
           <th>Gestion</th>
           <th>Responsable</th>
-          <th>Tipo operacion</th>
         </tr>
       </thead>
       <tbody>
@@ -64,9 +63,9 @@ const TableOperaciones = ({ operaciones }) => {
             <td>{operacion.monto}</td>
             <td>{operacion.gestion}</td>
             <td>
-              {operacion.investigador.nombre} {operacion.investigador.apellidos}
+              {operacion.investigador.nombres}{" "}
+              {operacion.investigador.apellidos}
             </td>
-            <td>{operacion.tipo.nombre}</td>
           </tr>
         ))}
       </tbody>

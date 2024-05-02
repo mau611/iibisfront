@@ -47,7 +47,7 @@ const EstadisticasPrincipal = () => {
     <AdminLayout>
       <h3 className="text-center p-2">Estadisticas</h3>
       <Row className="container">
-        <Col lg={5}>
+        <Col sm={6}>
           <InputGroup>
             <InputGroup.Text id="basic-addon1">Gestion:</InputGroup.Text>
             <Form.Select
@@ -62,7 +62,7 @@ const EstadisticasPrincipal = () => {
             </Form.Select>
           </InputGroup>
         </Col>
-        <Col lg={5}>
+        <Col sm={6}>
           <InputGroup>
             <InputGroup.Text id="basic-addon1">Actividades:</InputGroup.Text>
             <Form.Select
@@ -85,12 +85,6 @@ const EstadisticasPrincipal = () => {
               <option value="Otros">Otros</option>
             </Form.Select>
           </InputGroup>
-        </Col>
-        <Col lg={2}>
-          <Button variant="outline-primary" style={{ width: "100%" }}>
-            {" "}
-            <HiOutlineDocumentSearch /> Buscar
-          </Button>
         </Col>
       </Row>
       <Row>

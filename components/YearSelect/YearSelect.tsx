@@ -19,7 +19,9 @@ const YearSelect = ({ value, onChange }) => {
       <InputGroup.Text id="basic-addon1">Filtrar por gestion:</InputGroup.Text>
       <Form.Select
         aria-label="Gestion"
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
         value={value}
       >
         <option value="Todos">Todos</option>
