@@ -8,12 +8,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import Cookies from "js-cookie";
 
 const DetalleOperaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
   const [year, setYear] = useState("Todos");
 
   useEffect(() => {
+    const yearCookie = Cookies.get("det-year");
+    setYear(yearCookie ? yearCookie : "Todos");
     getOperaciones();
   }, [year]);
 
@@ -26,7 +29,7 @@ const DetalleOperaciones = () => {
       <h3 className="text-center p-2">Detalle de operaciones</h3>
       <Row className="container">
         <Col lg={5}>
-          <YearSelect value={year} onChange={setYear} />
+          <YearSelect value={year} onChange={setYear} component={"det"} />
         </Col>
       </Row>
       {operaciones.length > 0 &&

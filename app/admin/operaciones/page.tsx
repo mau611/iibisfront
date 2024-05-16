@@ -6,12 +6,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { endpoint } from "@/components/Endpoint/Endpoint";
 import YearSelect from "@/components/YearSelect/YearSelect";
-import Paginacion from "@/components/Paginacion/Paginacion";
+import Cookies from "js-cookie";
 
 const Operaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
   const [year, setYear] = useState("Todos");
   useEffect(() => {
+    const yearCookie = Cookies.get("ops-year");
+    setYear(yearCookie ? yearCookie : "Todos");
     getOperaciones();
   }, [year]);
   const getOperaciones = async () => {
@@ -21,7 +23,7 @@ const Operaciones = () => {
   return (
     <AdminLayout>
       <Title title="Operaciones" />
-      <YearSelect value={year} onChange={setYear} />
+      <YearSelect value={year} onChange={setYear} component={"ops"} />
       <TableOperaciones operaciones={operaciones} />
     </AdminLayout>
   );

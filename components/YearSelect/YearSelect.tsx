@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
+import Cookies from "js-cookie";
 
-const YearSelect = ({ value, onChange }) => {
+const YearSelect = ({ value, onChange, component }) => {
   const [years, setYears] = useState<Number[]>([]);
   useEffect(() => {
     getYears();
@@ -21,6 +22,10 @@ const YearSelect = ({ value, onChange }) => {
         aria-label="Gestion"
         onChange={(e) => {
           onChange(e.target.value);
+          if (component === "ops")
+            Cookies.set("ops-year", e.target.value, { expires: 1 });
+          if (component === "det")
+            Cookies.set("det-year", e.target.value, { expires: 1 });
         }}
         value={value}
       >
