@@ -2,31 +2,29 @@
 import { endpoint } from "@/components/Endpoint/Endpoint";
 import Proyectos from "@/components/Proyectos/Proyectos";
 import Title from "@/components/Title/Title";
-import InvLayout from "@/components/layout/investigador/InvLayout";
+import AdminLayout from "@/components/layout/admin/AdminLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
-  const [proyectos, setProyectos] = useState([]);
-
+  const [sispoas, setSispoas] = useState([]);
   useEffect(() => {
-    getProyectos();
+    getSispoas();
   }, []);
-
-  const getProyectos = async () => {
+  const getSispoas = async () => {
     try {
-      const response = await axios.get(`${endpoint}/sispoas_inv/${1}`);
-      setProyectos(response.data);
+      const response = await axios.get(`${endpoint}/sispoas`);
+      setSispoas(response.data);
     } catch (error) {
       console.log(error);
-      setProyectos([]);
+      setSispoas([]);
     }
   };
   return (
-    <InvLayout>
-      <Title title="Proyectos" />
-      <Proyectos proyectos={proyectos} />
-    </InvLayout>
+    <AdminLayout>
+      <Title title="Lista de proyectos" />
+      <Proyectos proyectos={sispoas} />
+    </AdminLayout>
   );
 };
 

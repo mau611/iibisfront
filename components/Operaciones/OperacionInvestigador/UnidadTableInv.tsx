@@ -74,7 +74,11 @@ const UnidadTableInv = ({ documentos, operacionId, unidadId }) => {
               <td colSpan={2} key={index}>
                 {documentos[index]?.archivos_verificacion.map(
                   (archivo, index) => (
-                    <PdfPreview key={index} nombre={archivo.nombre} />
+                    <PdfPreview
+                      key={index}
+                      nombre={archivo.nombre}
+                      ruta="iibis_file"
+                    />
                   )
                 )}
                 {documentos[index] ? (
