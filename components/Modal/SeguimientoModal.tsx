@@ -2,15 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { endpoint } from "../Endpoint/Endpoint";
+import axiosInstance from "@/Api/AxiosInstance";
+import axiosApi from "@/Api/AxiosApi";
 
 const SeguimientoModal = ({ show, handleClose, id, tipoSeguimiento }) => {
+  const csrf = () => axiosInstance.get("/sanctum/csrf-cookie");
   const [avance, setAvance] = useState(0);
   const isActividad = tipoSeguimiento === "actividad";
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(id);
     try {
-      const response = await axios.post(
+      await csrf();
+      const response = await axiosApi.post(
         `${endpoint}/${
           isActividad ? "seguimiento_actividad" : "seguimiento_gestion"
         }/${id}`,

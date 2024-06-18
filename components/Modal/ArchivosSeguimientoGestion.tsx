@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { endpoint } from "../Endpoint/Endpoint";
+import axiosApi from "@/Api/AxiosApi";
+import axiosInstance from "@/Api/AxiosInstance";
 
 const ArchivosSeguimientoGestion = ({ show, handleClose, gestionId }) => {
+  const csrf = () => axiosInstance.get("/sanctum/csrf-cookie");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileChange = (event) => {
@@ -16,7 +19,8 @@ const ArchivosSeguimientoGestion = ({ show, handleClose, gestionId }) => {
       formData.append("files[]", selectedFiles[i]);
     }
     try {
-      const response = await axios.post(
+      await csrf();
+      const response = await axiosApi.post(
         `${endpoint}/documento_seguimiento_gestion/${gestionId}`,
         formData,
         {

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Table } from "react-bootstrap";
+import UserContext from "../data/Context/UserContext";
 
 const Proyectos = ({ proyectos }) => {
+  const { getUser } = useContext(UserContext);
   return (
     <Table striped responsive>
       <thead>

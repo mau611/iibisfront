@@ -3,7 +3,6 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const UnidadTable = ({ documentos }) => {
-  console.log(documentos[0]?.archivos_verificacion);
   const metaUnidad = () => {
     let meta = 0;
     documentos.map((doc) => {
