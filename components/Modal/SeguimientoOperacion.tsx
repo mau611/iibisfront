@@ -2,7 +2,6 @@ import axiosApi from "@/Api/AxiosApi";
 import axiosInstance from "@/Api/AxiosInstance";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 
 const SeguimientoOperacion = ({
   show,
@@ -26,7 +25,7 @@ const SeguimientoOperacion = ({
     event.preventDefault();
     await csrf();
     try {
-      const response = axiosApi.post(`${endpoint}/documento_verificacion`, {
+      const response = axiosApi.post(`/documento_verificacion`, {
         meta: formData.periodo,
         periodo: periodo,
         descripcion: formData.documentos,

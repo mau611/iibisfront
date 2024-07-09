@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import ActividadInvestigacion from "../ActividadInvestigacion/ActividadInvestigacion";
 import axiosApi from "@/Api/AxiosApi";
-import { endpoint } from "../Endpoint/Endpoint";
 import axiosInstance from "@/Api/AxiosInstance";
 
 const SeguimientoActividad = ({ show, handleClose, actividadId, periodo }) => {
@@ -34,7 +32,7 @@ const SeguimientoActividad = ({ show, handleClose, actividadId, periodo }) => {
     try {
       await csrf();
       const response = await axiosApi.post(
-        `${endpoint}/seguimiento_actividad/${actividadId}`,
+        `/seguimiento_actividad/${actividadId}`,
         {
           estado: status,
           porcentajeAvance: percentage,

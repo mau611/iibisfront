@@ -1,8 +1,6 @@
-import axios from "axios";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 import axiosInstance from "@/Api/AxiosInstance";
 import { useRouter } from "next/navigation";
 

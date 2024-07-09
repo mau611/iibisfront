@@ -2,18 +2,8 @@
 import axiosApi from "@/Api/AxiosApi";
 import ActividadInvestigacion from "@/components/ActividadInvestigacion/ActividadInvestigacion";
 import AdminLayout from "@/components/layout/admin/AdminLayout";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  InputGroup,
-  ListGroup,
-  Row,
-} from "react-bootstrap";
-import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { Col, Form, InputGroup, Row } from "react-bootstrap";
 
 const EstadisticasPrincipal = () => {
   const [activities, setActivities] = useState([]);
@@ -56,8 +46,10 @@ const EstadisticasPrincipal = () => {
               onChange={(e) => setYear(e.target.value)}
             >
               <option value="Todos">Todos</option>
-              {years.map((y) => (
-                <option value={y}>{y}</option>
+              {years.map((y, index) => (
+                <option value={y} key={index}>
+                  {y}
+                </option>
               ))}
             </Form.Select>
           </InputGroup>

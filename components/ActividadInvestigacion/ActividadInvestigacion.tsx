@@ -7,7 +7,7 @@ const ActividadInvestigacion = ({ title, activitie }) => {
     let total = 0;
     operaciones.map((operacion) => {
       operacion.documentos_verificacion.map((doc) => {
-        total += doc.metas[0].meta;
+        total += doc.meta.meta;
       });
     });
     return total;
@@ -18,9 +18,9 @@ const ActividadInvestigacion = ({ title, activitie }) => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <ul>
-            {activitie.subactividades.map((subactividad) =>
+            {activitie.subactividades.map((subactividad, index) =>
               cantidadProducida(subactividad.operaciones) !== 0 ? (
-                <li>
+                <li key={index}>
                   {cantidadProducida(subactividad.operaciones)}{" "}
                   {subactividad.subactividad}
                 </li>

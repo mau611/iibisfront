@@ -7,7 +7,7 @@ const DetalleReportes = ({ operacion }) => {
     let total = 0;
     operacion.documentos_verificacion?.map((doc) => {
       if (doc.unidad.nombre === unidad) {
-        total += doc.metas[0].meta;
+        total += doc.meta.meta;
       }
     });
     return total;
@@ -34,15 +34,15 @@ const DetalleReportes = ({ operacion }) => {
   const totalEjecutado = () => {
     let total = 0;
     operacion.documentos_verificacion.map((doc) => {
-      total += doc.metas[0].meta;
+      total += doc.meta.meta;
     });
     return total;
   };
   const totalEjecutadoPeriodo = (periodo) => {
     let total = 0;
     operacion.documentos_verificacion.map((doc) => {
-      if (doc.metas[0].periodo === String(periodo)) {
-        total += doc.metas[0].meta;
+      if (doc.meta.periodo === String(periodo)) {
+        total += doc.meta.meta;
       }
     });
     return total;
@@ -70,9 +70,9 @@ const DetalleReportes = ({ operacion }) => {
             <strong>Primer Semestre</strong>
           </p>
           <ol>
-            {operacion.documentos_verificacion.map((doc) =>
-              doc.metas[0].periodo === "1" ? (
-                <li>
+            {operacion.documentos_verificacion.map((doc, index) =>
+              doc.meta.periodo === "1" ? (
+                <li key={index}>
                   {doc.descripcion} {doc.nombres} ({doc.unidad.nombre})
                 </li>
               ) : (
@@ -86,9 +86,9 @@ const DetalleReportes = ({ operacion }) => {
             <strong>Segundo Semestre</strong>
           </p>
           <ol>
-            {operacion.documentos_verificacion.map((doc) =>
-              doc.metas[0].periodo === "2" ? (
-                <li>
+            {operacion.documentos_verificacion.map((doc, index) =>
+              doc.meta.periodo === "2" ? (
+                <li key={index}>
                   {doc.descripcion} {doc.nombres} ({doc.unidad.nombre})
                 </li>
               ) : (
