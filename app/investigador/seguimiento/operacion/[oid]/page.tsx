@@ -1,9 +1,7 @@
 "use client";
-import { endpoint } from "@/components/Endpoint/Endpoint";
 import SeguimientoOperacion from "@/components/TablaExcel/Seguimientos/SeguimientoOperacion";
 import InvLayout from "@/components/layout/investigador/InvLayout";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Breadcrumb } from "react-bootstrap";
 
 const page = ({ params }: { params: { oid: number } }) => {

@@ -1,11 +1,9 @@
 import axiosApi from "@/Api/AxiosApi";
-import { endpoint } from "@/components/Endpoint/Endpoint";
 import UserContext from "@/components/data/Context/UserContext";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import TextCeld from "../TextCeld";
 import ActividadesComponentes from "../ActividadesComponentes";
-import ComponenteModal from "@/components/Modal/ComponenteModal";
 import "../styles.css";
 import SeguimientoButton from "./SeguimientoButton";
 import SeguimientoActividad from "./SeguimientoActividad";
@@ -46,9 +44,7 @@ const SeguimientoProyecto = ({ periodo }) => {
     const user = await getUser();
     try {
       const response = await axiosApi.get(
-        `${endpoint}/sispoas_inv/${
-          user?.investigador.id
-        }/${new Date().getFullYear()}`
+        `/sispoas_inv/${user?.investigador.id}/${new Date().getFullYear()}`
       );
       setProyectos(response.data);
       setGestion(response.data[0].proyectos[0]);

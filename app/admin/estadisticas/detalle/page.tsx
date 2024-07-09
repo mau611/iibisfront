@@ -1,14 +1,12 @@
 "use client";
 import DetalleReportes from "@/components/DetalleReportes/DetalleReportes";
-import { endpoint } from "@/components/Endpoint/Endpoint";
-import Paginacion from "@/components/Paginacion/Paginacion";
 import YearSelect from "@/components/YearSelect/YearSelect";
 import AdminLayout from "@/components/layout/admin/AdminLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
-import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { Col, Row } from "react-bootstrap";
 import Cookies from "js-cookie";
+import axiosApi from "@/Api/AxiosApi";
 
 const DetalleOperaciones = () => {
   const [operaciones, setOperaciones] = useState([]);
@@ -21,7 +19,7 @@ const DetalleOperaciones = () => {
   }, [year]);
 
   const getOperaciones = async () => {
-    const response = await axios.get(`${endpoint}/detalle_operaciones/${year}`);
+    const response = await axiosApi.get(`/detalle_operaciones/${year}`);
     setOperaciones(response.data);
   };
   return (

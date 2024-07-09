@@ -1,15 +1,9 @@
 import axiosApi from "@/Api/AxiosApi";
-import { endpoint } from "@/components/Endpoint/Endpoint";
 import UserContext from "@/components/data/Context/UserContext";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
-import TextCeld from "../TextCeld";
-import ActividadesComponentes from "../ActividadesComponentes";
 import SeguimientoOperacionModal from "@/components/Modal/SeguimientoOperacion";
 import "../styles.css";
-import SeguimientoButton from "./SeguimientoButton";
-import SeguimientoActividad from "./SeguimientoActividad";
-import axios from "axios";
 import ArchivosSeguimientoUnidad from "@/components/Modal/ArchivosSeguimientoUnidad";
 import PdfPreview from "@/components/PdfPreview/PdfPreview";
 import axiosInstance from "@/Api/AxiosInstance";
@@ -84,7 +78,7 @@ const SeguimientoOperacion = ({ periodo, operacionId }) => {
 
   const getOperacion = async () => {
     await csrf();
-    const response = await axiosApi.get(`${endpoint}/operacion/${operacionId}`);
+    const response = await axiosApi.get(`/operacion/${operacionId}`);
     setOperacion(response.data);
   };
   const meta = (metas = [], periodo) => {

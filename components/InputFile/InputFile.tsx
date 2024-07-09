@@ -1,7 +1,6 @@
-import axios from "axios";
+import axiosApi from "@/Api/AxiosApi";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 
 const InputFile = ({ docVerificacionId }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -17,8 +16,8 @@ const InputFile = ({ docVerificacionId }) => {
       formData.append("files[]", selectedFiles[i]);
     }
     try {
-      const response = await axios.post(
-        `${endpoint}/archivos_verificacion/${docVerificacionId}`,
+      const response = await axiosApi.post(
+        `/archivos_verificacion/${docVerificacionId}`,
         formData,
         {
           headers: {

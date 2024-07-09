@@ -4,12 +4,11 @@ import "./styles.css";
 import TextCeld from "./TextCeld";
 import UserContext from "../data/Context/UserContext";
 import axiosApi from "@/Api/AxiosApi";
-import { endpoint } from "../Endpoint/Endpoint";
 import ActividadesComponentes from "./ActividadesComponentes";
 import ComponenteModal from "../Modal/ComponenteModal";
 
 const TablaContainer = () => {
-  const { user, getUser } = useContext(UserContext);
+  const { getUser } = useContext(UserContext);
   const [proyectos, setProyectos] = useState([]);
   const [gestion, setGestion] = useState([]);
   const [showModalComponent, setShowModalComponent] = useState(false);
@@ -27,9 +26,7 @@ const TablaContainer = () => {
     const user = await getUser();
     try {
       const response = await axiosApi.get(
-        `${endpoint}/sispoas_inv/${
-          user?.investigador.id
-        }/${new Date().getFullYear()}`
+        `/sispoas_inv/${user?.investigador.id}/${new Date().getFullYear()}`
       );
       setProyectos(response.data);
       setGestion(response.data[0].proyectos[0]);

@@ -1,7 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
+import axiosApi from "@/Api/AxiosApi";
 
 const DocumentoVerificacionModal = ({
   show,
@@ -23,7 +22,7 @@ const DocumentoVerificacionModal = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     try {
-      axios.post(`${endpoint}/documento_verificacion`, {
+      axiosApi.post(`/documento_verificacion`, {
         meta,
         periodo,
         descripcion,

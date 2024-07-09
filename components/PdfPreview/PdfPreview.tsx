@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import axios from "axios";
-import { endpoint } from "../Endpoint/Endpoint";
 import Link from "next/link";
 import { FaFilePdf } from "react-icons/fa";
 import axiosApi from "@/Api/AxiosApi";
@@ -14,7 +12,7 @@ const PdfPreview = ({ nombre, ruta }) => {
   }, [nombre]);
 
   const getRuta = async () => {
-    const response = await axiosApi.get(`${endpoint}/${ruta}/${nombre}`);
+    const response = await axiosApi.get(`/${ruta}/${nombre}`);
     setRoute(response.data);
   };
   return (

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 
 const ComponenteModal = ({ show, handleClose }) => {
   return (

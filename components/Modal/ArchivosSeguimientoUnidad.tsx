@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 import axiosInstance from "@/Api/AxiosInstance";
 import axiosApi from "@/Api/AxiosApi";
 
@@ -25,7 +24,7 @@ const ArchivosSeguimientoUnidad = ({
     try {
       await csrf();
       const response = await axiosApi.post(
-        `${endpoint}/archivos_verificacion/${docVerificacionId}`,
+        `/archivos_verificacion/${docVerificacionId}`,
         formData,
         {
           headers: {

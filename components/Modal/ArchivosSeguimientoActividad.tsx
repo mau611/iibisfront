@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { endpoint } from "../Endpoint/Endpoint";
 import axiosInstance from "@/Api/AxiosInstance";
 import axiosApi from "@/Api/AxiosApi";
 
@@ -21,7 +19,7 @@ const ArchivosSeguimientoActividad = ({ show, handleClose, seguimientoId }) => {
     try {
       await csrf();
       const response = await axiosApi.post(
-        `${endpoint}/documento_seguimiento_actividad/${seguimientoId}`,
+        `/documento_seguimiento_actividad/${seguimientoId}`,
         formData,
         {
           headers: {

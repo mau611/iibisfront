@@ -1,10 +1,9 @@
 "use client";
-import { endpoint } from "@/components/Endpoint/Endpoint";
+import axiosApi from "@/Api/AxiosApi";
 import OperacionHead from "@/components/Operaciones/Operacion/OperacionHead";
 import UnidadesTable from "@/components/Operaciones/Operacion/UnidadesTable";
 import Title from "@/components/Title/Title";
 import AdminLayout from "@/components/layout/admin/AdminLayout";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Operacion = ({ params }: { params: { oid: number } }) => {
@@ -29,7 +28,7 @@ const Operacion = ({ params }: { params: { oid: number } }) => {
     return total;
   };
   const getOperacion = async () => {
-    const response = await axios.get(`${endpoint}/operacion/${params.oid}`);
+    const response = await axiosApi.get(`/operacion/${params.oid}`);
     setOperacion(response.data);
   };
   return (
