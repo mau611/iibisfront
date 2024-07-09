@@ -49,7 +49,7 @@ const EstadisticasPrincipal = () => {
       <Row className="container">
         <Col sm={6}>
           <InputGroup>
-            <InputGroup.Text id="basic-addon1">Gestion:</InputGroup.Text>
+            <InputGroup.Text id="basic-addon1">Gestion :</InputGroup.Text>
             <Form.Select
               aria-label="Gestion"
               value={year}
