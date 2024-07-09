@@ -30,7 +30,6 @@ const Login = () => {
     <Container
       fluid
       className="d-flex align-items-center justify-content-center"
-      // style={{ height: "100vh", backgroundColor: "#eeeeee" }}
       style={{ height: "100vh", backgroundColor: "#106DFB" }}
     >
       <Row className="justify-content-center" style={{ width: "60vh" }}>

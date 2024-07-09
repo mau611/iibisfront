@@ -5,7 +5,7 @@ import { endpoint } from "../Endpoint/Endpoint";
 import axiosInstance from "@/Api/AxiosInstance";
 import axiosApi from "@/Api/AxiosApi";
 
-const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
+const ArchivosSeguimientoActividad = ({ show, handleClose, seguimientoId }) => {
   const csrf = () => axiosInstance.get("/sanctum/csrf-cookie");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -32,7 +32,7 @@ const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
       alert(response.data.message);
       window.location.reload();
     } catch (error) {
-      console.log("Error al subir archivos", error);
+      console.error("Error al subir archivos", error);
     }
   };
   return (
@@ -55,4 +55,4 @@ const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
   );
 };
 
-export default ArchivosSeguimiento;
+export default ArchivosSeguimientoActividad;

@@ -2,10 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { endpoint } from "../Endpoint/Endpoint";
-import axiosApi from "@/Api/AxiosApi";
 import axiosInstance from "@/Api/AxiosInstance";
+import axiosApi from "@/Api/AxiosApi";
 
-const ArchivosSeguimientoGestion = ({ show, handleClose, seguimientoId }) => {
+const ArchivosSeguimientoUnidad = ({
+  show,
+  handleClose,
+  docVerificacionId,
+}) => {
   const csrf = () => axiosInstance.get("/sanctum/csrf-cookie");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -21,7 +25,7 @@ const ArchivosSeguimientoGestion = ({ show, handleClose, seguimientoId }) => {
     try {
       await csrf();
       const response = await axiosApi.post(
-        `${endpoint}/documento_seguimiento_gestion/${seguimientoId}`,
+        `${endpoint}/archivos_verificacion/${docVerificacionId}`,
         formData,
         {
           headers: {
@@ -38,7 +42,7 @@ const ArchivosSeguimientoGestion = ({ show, handleClose, seguimientoId }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Archivos de verificacion de seguimiento</Modal.Title>
+        <Modal.Title>Archivos de verificacion</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
@@ -55,4 +59,4 @@ const ArchivosSeguimientoGestion = ({ show, handleClose, seguimientoId }) => {
   );
 };
 
-export default ArchivosSeguimientoGestion;
+export default ArchivosSeguimientoUnidad;

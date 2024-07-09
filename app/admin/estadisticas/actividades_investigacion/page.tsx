@@ -1,6 +1,6 @@
 "use client";
+import axiosApi from "@/Api/AxiosApi";
 import ActividadInvestigacion from "@/components/ActividadInvestigacion/ActividadInvestigacion";
-import { endpoint } from "@/components/Endpoint/Endpoint";
 import AdminLayout from "@/components/layout/admin/AdminLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -27,8 +27,8 @@ const EstadisticasPrincipal = () => {
   }, [year, actividad]);
 
   const getActividades = async () => {
-    const response = await axios.get(
-      `${endpoint}/actividades_investigacion/${year}/${actividad}`
+    const response = await axiosApi.get(
+      `/actividades_investigacion/${year}/${actividad}`
     );
     setActivities(response.data);
   };

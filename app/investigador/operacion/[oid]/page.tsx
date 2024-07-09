@@ -1,57 +1,30 @@
 "use client";
-import { endpoint } from "@/components/Endpoint/Endpoint";
-import OperacionHeadInv from "@/components/Operaciones/OperacionInvestigador/OperacionHeadInv";
-import UnidadesTableInv from "@/components/Operaciones/OperacionInvestigador/UnidadesTableInv";
-import Title from "@/components/Title/Title";
+import axiosApi from "@/Api/AxiosApi";
+import OperacionContainer from "@/components/TablaExcel/Operaciones/OperacionContainer";
 import InvLayout from "@/components/layout/investigador/InvLayout";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Breadcrumb } from "react-bootstrap";
 
 const page = ({ params }: { params: { oid: number } }) => {
   const [operacion, setOperacion] = useState([]);
-  const totalPeriodo = (docsVerificacion, periodo) => {
-    let total = 0;
-    docsVerificacion?.map((doc) => {
-      if (doc.metas[0].periodo === String(periodo)) {
-        total = total + doc.metas[0].meta;
-      }
-    });
-    return total;
-  };
-  const totalLogrado = (docsVerificacion) => {
-    let total = 0;
-    docsVerificacion?.map((doc) => {
-      total = total + doc.metas[0].meta;
-    });
-    return total;
-  };
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     getOperacion();
   }, []);
   const getOperacion = async () => {
-    const response = await axios.get(`${endpoint}/operacion/${params.oid}`);
+    const response = await axiosApi.get(`/operacion/${params.oid}`);
     setOperacion(response.data);
   };
   return (
     <InvLayout>
-      <Title title={`Operacion`} />
-      <OperacionHeadInv operacion={operacion} />
-      <div className="p-3">
-        <strong>Meta logrado:</strong>{" "}
-        {totalLogrado(operacion.documentos_verificacion)}.
-        <strong> Primer: </strong>{" "}
-        {totalPeriodo(operacion.documentos_verificacion, 1)} ,
-        <strong> Segundo: </strong>{" "}
-        {totalPeriodo(operacion.documentos_verificacion, 2)} ,
-        <strong> Tercer: </strong>{" "}
-        {totalPeriodo(operacion.documentos_verificacion, 3)} ,
-        <strong> Cuarto: </strong>{" "}
-        {totalPeriodo(operacion.documentos_verificacion, 4)}.
-      </div>
-      <UnidadesTableInv
-        docsVerificacion={operacion.documentos_verificacion}
-        operacionId={params.oid}
-      />
+      <Breadcrumb className="m-3">
+        <Breadcrumb.Item href="/investigador">Inicio</Breadcrumb.Item>
+        <Breadcrumb.Item href="/investigador/operaciones">
+          Operaciones
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>Operacion</Breadcrumb.Item>
+      </Breadcrumb>
+      <OperacionContainer operacion={operacion} />
     </InvLayout>
   );
 };

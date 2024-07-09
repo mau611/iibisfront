@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApi = axios.create({
-  baseURL: "http://localhost:8000/api", // Asegúrate de ajustar esto a la URL de tu backend Laravel
+  baseURL: process.env.NEXT_PUBLIC_API_URL, // Asegúrate de ajustar esto a la URL de tu backend Laravel
   headers: {
     "X-Requested-With": "XMLHttpRequest",
   },

@@ -11,10 +11,6 @@ import {
   Navbar,
   Offcanvas,
 } from "react-bootstrap";
-import { FaBell, FaHome, FaSearch, FaUser } from "react-icons/fa";
-import { TbReportSearch } from "react-icons/tb";
-
-const size = "2em";
 
 const InvNav = () => {
   const router = useRouter();
@@ -63,13 +59,8 @@ const InvNav = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="/investigador">inicio</Nav.Link>
-                <Nav.Link href="/investigador/proyectos">Proyectos</Nav.Link>
-                <Nav.Link href="/investigador/operaciones">
-                  Operaciones
-                </Nav.Link>
                 {user && (
-                  <Nav.Link onClick={() => cerrarSesion()}>
+                  <Nav.Link onClick={() => cerrarSesion()} active>
                     Cerrar Sesion
                   </Nav.Link>
                 )}
