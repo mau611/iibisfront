@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { endpoint } from "../Endpoint/Endpoint";
+import axiosInstance from "@/Api/AxiosInstance";
+import axiosApi from "@/Api/AxiosApi";
 
-const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
+const ArchivosSeguimientoActividad = ({ show, handleClose, seguimientoId }) => {
+  const csrf = () => axiosInstance.get("/sanctum/csrf-cookie");
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileChange = (event) => {
@@ -16,7 +19,8 @@ const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
       formData.append("files[]", selectedFiles[i]);
     }
     try {
-      const response = await axios.post(
+      await csrf();
+      const response = await axiosApi.post(
         `${endpoint}/documento_seguimiento_actividad/${seguimientoId}`,
         formData,
         {
@@ -28,7 +32,7 @@ const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
       alert(response.data.message);
       window.location.reload();
     } catch (error) {
-      console.log("Error al subir archivos", error);
+      console.error("Error al subir archivos", error);
     }
   };
   return (
@@ -51,4 +55,4 @@ const ArchivosSeguimiento = ({ show, handleClose, seguimientoId }) => {
   );
 };
 
-export default ArchivosSeguimiento;
+export default ArchivosSeguimientoActividad;

@@ -13,7 +13,6 @@ const UnidadTableInv = ({ documentos, operacionId, unidadId }) => {
   });
 
   const handleOpenModal = (periodo) => {
-    console.log({ operacionId, unidadId, periodo });
     setModalData({ operacionId, unidadId, periodo });
     setShowModal(true);
   };

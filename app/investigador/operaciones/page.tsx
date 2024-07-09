@@ -5,22 +5,17 @@ import Title from "@/components/Title/Title";
 import InvLayout from "@/components/layout/investigador/InvLayout";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import OperacionesContainer from "./OperacionesContainer";
+import { Breadcrumb } from "react-bootstrap";
 
 const page = () => {
-  const [operaciones, setOperaciones] = useState([]);
-  useEffect(() => {
-    getOperaciones();
-  }, []);
-  const getOperaciones = async () => {
-    const response = await axios.get(
-      `${endpoint}/operaciones_investigador/${13}`
-    );
-    setOperaciones(response.data);
-  };
   return (
     <InvLayout>
-      <Title title="Operaciones" />
-      <TableOperaciones operaciones={operaciones} />
+      <Breadcrumb className="m-3">
+        <Breadcrumb.Item href="/investigador">Inicio</Breadcrumb.Item>
+        <Breadcrumb.Item active>Operaciones</Breadcrumb.Item>
+      </Breadcrumb>
+      <OperacionesContainer />
     </InvLayout>
   );
 };

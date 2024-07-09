@@ -1,5 +1,7 @@
+import UserContext from "@/components/data/Context/UserContext";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useContext, useEffect } from "react";
 import {
   Container,
   Dropdown,
@@ -9,12 +11,18 @@ import {
   Navbar,
   Offcanvas,
 } from "react-bootstrap";
-import { FaBell, FaHome, FaSearch, FaUser } from "react-icons/fa";
-import { TbReportSearch } from "react-icons/tb";
-
-const size = "2em";
 
 const InvNav = () => {
+  const router = useRouter();
+  const { user, getUser, isInvestigador, cerrarSesion } =
+    useContext(UserContext);
+  useEffect(() => {
+    getUser();
+    if (!isInvestigador) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <>
       <Navbar
@@ -25,7 +33,7 @@ const InvNav = () => {
         sticky="top"
       >
         <Container fluid>
-          <Navbar.Brand href="#home" className="text-primary-emphasis">
+          <Navbar.Brand href="/investigador" className="text-primary-emphasis">
             <Image
               src="/images/image-color.png"
               style={{
@@ -51,9 +59,11 @@ const InvNav = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#profile">Datos iibismed</Nav.Link>
-                <Nav.Link href="#search">Proyectos</Nav.Link>
-                <Nav.Link href="#notifications">Operaciones</Nav.Link>
+                {user && (
+                  <Nav.Link onClick={() => cerrarSesion()} active>
+                    Cerrar Sesion
+                  </Nav.Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

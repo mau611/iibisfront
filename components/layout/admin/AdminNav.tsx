@@ -1,5 +1,7 @@
+import UserContext from "@/components/data/Context/UserContext";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useContext, useEffect } from "react";
 import {
   Container,
   Dropdown,
@@ -15,6 +17,14 @@ import { TbReportSearch } from "react-icons/tb";
 const size = "2em";
 
 const AdminNav = () => {
+  const router = useRouter();
+  const { user, getUser, isAdmin, cerrarSesion } = useContext(UserContext);
+  useEffect(() => {
+    getUser();
+    if (!isAdmin) {
+      router.push("/");
+    }
+  }, []);
   return (
     <>
       <Navbar
@@ -25,7 +35,7 @@ const AdminNav = () => {
         sticky="top"
       >
         <Container fluid>
-          <Navbar.Brand href="#home" className="text-primary-emphasis">
+          <Navbar.Brand href="/admin" className="text-primary-emphasis">
             <Image
               src="/images/image-color.png"
               style={{
@@ -63,10 +73,14 @@ const AdminNav = () => {
                     Actividades de investigacion
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#search">Unidades</Nav.Link>
-                <Nav.Link href="#notifications">Investigadores</Nav.Link>
-                <Nav.Link href="#profile">Proyectos</Nav.Link>
+                <Nav.Link href="/admin">Inicio</Nav.Link>
+                <Nav.Link href="/admin/proyectos">Proyectos</Nav.Link>
                 <Nav.Link href="/admin/operaciones">Operaciones</Nav.Link>
+                {user && (
+                  <Nav.Link onClick={() => cerrarSesion()}>
+                    Cerrar Sesion
+                  </Nav.Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

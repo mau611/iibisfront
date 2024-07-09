@@ -1,0 +1,121 @@
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 8px;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+th.numbers,
+td.numbers {
+  padding: 8px;
+  border: 1px solid #ddd;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+td.unidad,
+th.unidad {
+  font-size: 10px;
+}
+
+th {
+  text-align: left;
+}
+
+th.rojo,
+td.rojo {
+  background-color: #ff0000;
+}
+th.naranja,
+td.naranja {
+  background-color: #ff6600;
+}
+th.salmon,
+td.salmon {
+  background-color: #fd6151;
+}
+th.amarillo,
+td.amarillo {
+  background-color: #ffff00;
+}
+th.verde,
+td.verde {
+  background-color: #00b050;
+}
+th.verde-claro,
+td.verde-claro {
+  background-color: #a9d08e;
+}
+
+th.dark-morado {
+  background-color: #7030a0;
+}
+th.light-morado {
+  background-color: #b4a7d6;
+}
+th.celeste {
+  background-color: #00b0f0;
+}
+th.dark-amarillo {
+  background-color: #ffc000;
+}
+th.ladrillo {
+  background-color: #c65911;
+}
+th.dark-celeste {
+  background-color: #8ea9db;
+}
+th.bright-verde {
+  background-color: #00b050;
+}
+
+td {
+  height: 50vh;
+  min-height: 50vh;
+  max-height: 50vh;
+}
+.table > :not(caption) > * > * {
+  padding: 1px;
+}
+
+.sticky-column,
+td.sticky-column {
+  position: -webkit-sticky;
+  /* For Safari */
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  @media (max-width: 600px) {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    font-size: 9px;
+  }
+}
+td.sticky-column {
+  background-color: #f7f5f5;
+}
+
+.celda {
+  border-bottom: 1px solid gray;
+  height: 600px;
+}
+
+.actividad {
+  border-bottom: 1px solid gray;
+  height: 200px;
+}
