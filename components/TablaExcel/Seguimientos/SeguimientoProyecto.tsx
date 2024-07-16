@@ -49,7 +49,7 @@ const SeguimientoProyecto = ({ periodo }) => {
       setProyectos(response.data);
       setGestion(response.data[0].proyectos[0]);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   const getSeguimientoPeriodo = (periodo) => {

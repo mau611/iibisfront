@@ -30,7 +30,7 @@ const DocumentoVerificacionModal = ({
         operacionId,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
     handleClose();
     window.location.reload();

@@ -17,17 +17,11 @@ const SeguimientoOperacion = ({ periodo, operacionId }) => {
   const [unidad, setUnidad] = useState("");
   const [unidadId, setUnidadId] = useState("");
   const [docVerificacionId, setDocVerificacionId] = useState("");
-  const [seguimiento, setSeguimiento] = useState(() => {
-    switch (periodo) {
-      case 1:
-        return { primer: false, segundo: true, tercer: true, cuarto: true };
-      case 2:
-        return { primer: false, segundo: false, tercer: true, cuarto: true };
-      case 3:
-        return { primer: false, segundo: false, tercer: false, cuarto: true };
-      default:
-        return { primer: false, segundo: false, tercer: false, cuarto: false };
-    }
+  const [seguimiento, setSeguimiento] = useState({
+    primer: true,
+    segundo: true,
+    tercer: true,
+    cuarto: true,
   });
   const unidades = [
     { id: 1, nombre: "Basica" },
@@ -39,8 +33,20 @@ const SeguimientoOperacion = ({ periodo, operacionId }) => {
   ];
 
   useEffect(() => {
+    setSeguimiento(() => {
+      switch (periodo) {
+        case 1:
+          return { primer: false, segundo: true, tercer: true, cuarto: true };
+        case 2:
+          return { primer: false, segundo: false, tercer: true, cuarto: true };
+        case 3:
+          return { primer: false, segundo: false, tercer: false, cuarto: true };
+        default:
+          return { primer: true, segundo: true, tercer: true, cuarto: true };
+      }
+    });
     getOperacion();
-  }, []);
+  }, [periodo]);
 
   const getColSpan = (periodo) => {
     switch (periodo) {

@@ -27,7 +27,7 @@ const InputFile = ({ docVerificacionId }) => {
       );
       alert(response.data.message);
     } catch (error) {
-      console.log("Error al subir archivos", error);
+      console.error("Error al subir archivos", error);
     }
   };
 

@@ -31,7 +31,7 @@ const UserState = (props) => {
       });
       window.location.href = "/";
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     }
   };
   const isInvestigador = () => {
