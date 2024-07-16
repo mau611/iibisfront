@@ -20,7 +20,7 @@ const InvLayout = (props) => {
         router.push("/admin");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   return (

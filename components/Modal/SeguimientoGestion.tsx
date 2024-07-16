@@ -45,7 +45,7 @@ const SeguimientoGestion = ({ show, handleClose, gestionId, periodo }) => {
       );
       window.location.reload();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

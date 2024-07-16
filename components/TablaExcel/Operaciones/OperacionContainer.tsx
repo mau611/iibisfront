@@ -4,7 +4,6 @@ import "../styles.css";
 import Title from "@/components/Title/Title";
 
 const OperacionContainer = ({ operacion }) => {
-  console.log(operacion);
   const metaPeriodo = (periodo) => {
     const meta = operacion.metas?.find((meta) => meta.periodo === periodo);
     return meta?.meta;

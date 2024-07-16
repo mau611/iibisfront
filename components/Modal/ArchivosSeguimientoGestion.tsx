@@ -30,7 +30,7 @@ const ArchivosSeguimientoGestion = ({ show, handleClose, seguimientoId }) => {
       alert(response.data.message);
       window.location.reload();
     } catch (error) {
-      console.log("Error al subir archivos", error);
+      console.error("Error al subir archivos", error);
     }
   };
   return (

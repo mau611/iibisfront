@@ -45,7 +45,7 @@ const SeguimientoActividad = ({ show, handleClose, actividadId, periodo }) => {
       );
       window.location.reload();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

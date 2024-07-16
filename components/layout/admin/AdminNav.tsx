@@ -73,9 +73,11 @@ const AdminNav = () => {
                     Actividades de investigacion
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="/admin">Inicio</Nav.Link>
                 <Nav.Link href="/admin/proyectos">Proyectos</Nav.Link>
                 <Nav.Link href="/admin/operaciones">Operaciones</Nav.Link>
+                <Nav.Link href="/admin/habilitar_seguimiento">
+                  Habilitar seguimiento
+                </Nav.Link>
                 {user && (
                   <Nav.Link onClick={() => cerrarSesion()}>
                     Cerrar Sesion
